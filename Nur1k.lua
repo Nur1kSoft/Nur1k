@@ -8,7 +8,7 @@ local function promptPassword()
     screenGui.Parent = game:GetService("CoreGui")
 
     local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(0, 360, 0, 150)
+    frame.Size = UDim2.new(0, 370, 0, 170)
     frame.Position = UDim2.new(0.5, -180, 0.5, -75)
     frame.BackgroundColor3 = Color3.fromRGB(20,20,25)
     frame.Parent = screenGui
