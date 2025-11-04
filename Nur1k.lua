@@ -1,5 +1,5 @@
-local _C = string.char -- Используем короткое имя для string.char
-local _L = loadstring   -- Используем короткое имя для loadstring
+local _C = string.char 
+local _L = loadstring   
 
 local PASSWORD_CODES = {68, 79, 83, 65, 83, 65, 83, 65, 76, 73, 49, 50, 51}
 local PASSWORD = ""
