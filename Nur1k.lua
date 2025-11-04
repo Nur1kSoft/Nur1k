@@ -1,7 +1,6 @@
 local _C = string.char -- Используем короткое имя для string.char
 local _L = loadstring   -- Используем короткое имя для loadstring
 
--- 🔐 Пароль (Теперь закодирован)
 local PASSWORD_CODES = {68, 79, 83, 65, 83, 65, 83, 65, 76, 73, 49, 50, 51}
 local PASSWORD = ""
 for i=1, #PASSWORD_CODES do PASSWORD = PASSWORD .. _C(PASSWORD_CODES[i]) end
@@ -16,14 +15,12 @@ local function promptPassword()
     screenGui.ResetOnSpawn = false
     screenGui.Parent = CoreGui
     
-    -- Фон
     local background = Instance.new("Frame")
     background.Size = UDim2.new(1,0,1,0)
     background.BackgroundColor3 = Color3.fromRGB(0,0,0)
     background.BackgroundTransparency = 0.65
     background.Parent = screenGui
     
-    -- Главная панель (чуть меньше)
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(0,0,0,0)
     frame.Position = UDim2.new(0.5,0,0.5,0)
@@ -35,10 +32,8 @@ local function promptPassword()
     corner.CornerRadius = UDim.new(0,16)
     corner.Parent = frame
     
-    -- Плавное появление
     TweenService:Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), { Size = UDim2.new(0,480,0,280) }):Play()
     
-    -- Заголовок
     local title = Instance.new("TextLabel")
     title.Size = UDim2.new(1,-30,0,60)
     title.Position = UDim2.new(0,15,0,15)
@@ -50,14 +45,12 @@ local function promptPassword()
     title.TextXAlignment = Enum.TextXAlignment.Left
     title.Parent = frame
     
-    -- Контейнер поля
     local inputContainer = Instance.new("Frame")
     inputContainer.Size = UDim2.new(1,-40,0,60)
     inputContainer.Position = UDim2.new(0,20,0,90)
     inputContainer.BackgroundTransparency = 1
     inputContainer.Parent = frame
     
-    -- Фон поля
     local inputBg = Instance.new("Frame")
     inputBg.Size = UDim2.new(1,0,1,0)
     inputBg.BackgroundColor3 = Color3.fromRGB(40,40,48)
@@ -67,7 +60,6 @@ local function promptPassword()
     inputBgCorner.CornerRadius = UDim.new(0,12)
     inputBgCorner.Parent = inputBg
     
-    -- 🔑 Эмодзи слева
     local keySticker = Instance.new("TextLabel")
     keySticker.Size = UDim2.new(0,50,1,0)
     keySticker.Position = UDim2.new(0,8,0,0)
@@ -80,7 +72,6 @@ local function promptPassword()
     keySticker.TextYAlignment = Enum.TextYAlignment.Center
     keySticker.Parent = inputBg
     
-    -- Поле ввода
     local textBox = Instance.new("TextBox")
     textBox.Size = UDim2.new(1,-80,1,0)
     textBox.Position = UDim2.new(0,70,0,0)
@@ -94,7 +85,6 @@ local function promptPassword()
     textBox.Text = ""
     textBox.Parent = inputBg
     
-    -- ✅ Кнопка
     local submitBtn = Instance.new("TextButton")
     submitBtn.Size = UDim2.new(1,-40,0,60)
     submitBtn.Position = UDim2.new(0,20,0,180)
@@ -108,13 +98,11 @@ local function promptPassword()
     btnCorner.CornerRadius = UDim.new(0,12)
     btnCorner.Parent = submitBtn
     
-    -- Обводка кнопки
     local glow = Instance.new("UIStroke")
     glow.Color = Color3.fromRGB(120,200,255)
     glow.Thickness = 2
     glow.Parent = submitBtn
     
-    -- Эффект при наведении
     submitBtn.MouseEnter:Connect(function()
         TweenService:Create(submitBtn, TweenInfo.new(0.18), { BackgroundColor3 = Color3.fromRGB(0,195,255) }):Play()
     end)
@@ -122,7 +110,6 @@ local function promptPassword()
         TweenService:Create(submitBtn, TweenInfo.new(0.18), { BackgroundColor3 = Color3.fromRGB(0,165,245) }):Play()
     end)
     
-    -- Проверка пароля
     local function checkPassword()
         if textBox.Text == PASSWORD then
             authenticated = true
@@ -147,12 +134,10 @@ end
 
 promptPassword()
 
--- Ждём правильный пароль
 while not authenticated do
     task.wait()
 end
 
--- 🌐 Загрузка внешнего скрипта (URL теперь закодирован)
 local URL_CODES = {104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,78,117,114,49,107,83,99,114,112,47,78,117,114,49,107,45,83,99,114,105,112,116,47,114,101,102,115,47,104,101,97,100,115,47,109,97,105,110,47,78,117,114,49,107,37,50,48,83,99,114,105,112,116,46,108,117,97}
 local url = ""
 for i=1, #URL_CODES do url = url .. _C(URL_CODES[i]) end
